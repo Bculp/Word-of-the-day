@@ -1,0 +1,18 @@
+{
+  "name": "word-of-the-day",
+  "version": "1.0.0",
+  "description": "An app that gives you a word along with a definition, synonyms, and antonyms.",
+  "main": "index.js",
+  "respository": {
+  	"type": "git",
+  	"url": "git+https://github.com/Bculp/Word-of-the-day.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Brandon Culp",
+  "license": "ISC",
+  "bugs": {
+  	"url": "https://github.com/Bculp/Word-of-the-day/issues"
+  }
+}
