@@ -18,7 +18,7 @@ app.use((req, res, next) => {
 });
 
 app.get('/*', (req, res) => {
-	res.sendFile(app.get('../../public/index.html'));
+	res.sendFile(app.get('indexHTMLPath'));
 });
 
 // Error catching
