@@ -1,0 +1,9 @@
+# Ignore node modules
+node_modules
+
+# Webpack bundle files
+public/bundle.js
+public/bundle.js.map
+
+# NPM errors
+npm-debug.log
