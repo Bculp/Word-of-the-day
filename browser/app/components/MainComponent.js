@@ -4,32 +4,34 @@ import axios from 'axios';
 export default class MainComponent extends React.Component {
 	constructor(props) {
 		super(props);
-		this.state = {word: '', synonyms: [], antonyms: []};
+		this.state = {word: '', partOfSpeech: '', definition: '', exampleUses: [] };
 	}
 
 	componentDidMount() {
 		this.getWord();
-		this.getKeys();
 	}
 
 	getWord() {
-		// axios.get('http://www.setgetgo.com/randomword/get.php')
-		// .then(res => res.data)
-		// .then(word => this.setState({word: word}))
-		// .catch(console.log('error retrieving word from setgetgo'))
-	}
-
-	getKeys() {
 		axios.get('api/keys')
 		.then(res => res.data)
-		.then(result => console.log('your key is:', result))
+		.then(info => {
+			let instance = info[0];
+			this.setState({word: instance.word});
+			this.setState({partOfSpeech: instance.partOfSpeech});
+			this.setState({definition: instance.text});
+			this.setState({exampleUses: instance.exampleUses})
+		})
 		.catch('error getting keys')
 	}
 
 	render() {
 		return (
 			<div>
-				<h1>{this.state.word}</h1>
+				<div>
+					<h1>{this.state.word ? `${this.state.word} - ${this.state.partOfSpeech}` : ''}</h1>
+					<h2>{this.state.definition ? `Definition: ${this.state.definition}`: ''}</h2>
+					<h4>{this.state.exampleUses.length > 0 ? `Examples: ${this.state.exampleUses}` : ''}</h4>
+				</div>
 			</div>
 		)
 	}
