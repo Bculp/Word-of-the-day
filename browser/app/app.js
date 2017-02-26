@@ -5,5 +5,5 @@ import MainComponent from './components/MainComponent';
 
 ReactDOM.render (
 	<MainComponent />,
-	document.getElementById('main');
+	document.getElementById('main')
 );

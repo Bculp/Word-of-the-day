@@ -16,6 +16,7 @@
     "url": "https://github.com/Bculp/Word-of-the-day/issues"
   },
   "dependencies": {
+    "axios": "^0.15.3",
     "babel-core": "^6.23.1",
     "babel-loader": "^6.3.2",
     "babel-preset-env": "^1.1.8",
