@@ -9,13 +9,21 @@ export default class MainComponent extends React.Component {
 
 	componentDidMount() {
 		this.getWord();
+		this.getKeys();
 	}
 
 	getWord() {
-		axios.get('http://www.setgetgo.com/randomword/get.php')
+		// axios.get('http://www.setgetgo.com/randomword/get.php')
+		// .then(res => res.data)
+		// .then(word => this.setState({word: word}))
+		// .catch(console.log('error retrieving word from setgetgo'))
+	}
+
+	getKeys() {
+		axios.get('api/keys')
 		.then(res => res.data)
-		.then(word => this.setState({word: word}))
-		.catch(console.log('error retrieving word from setgetgo'))
+		.then(result => console.log('your key is:', result))
+		.catch('error getting keys')
 	}
 
 	render() {

@@ -7,3 +7,6 @@ public/bundle.js.map
 
 # NPM errors
 npm-debug.log
+
+# API keys
+.keys.js
