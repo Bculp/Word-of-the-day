@@ -18,7 +18,7 @@ export default class MainComponent extends React.Component {
 			let instance = info[0];
 			this.setState({
 				word: instance.word[0].toUpperCase() + instance.word.slice(1),
-				partOfSpeech: instance.partOfSpeech[0].toUpperCase() + instance.partOfSpeech.slice(1),
+				partOfSpeech: instance.partOfSpeech ? instance.partOfSpeech[0].toUpperCase() + instance.partOfSpeech.slice(1) : '',
 				definition: instance.text,
 			})
 			this.getRelatedWords(instance.word)
@@ -62,7 +62,7 @@ export default class MainComponent extends React.Component {
 		return (
 			<div>
 				<div className="flex-container">
-					<div className="item" id="word" >{this.state.word ? `${this.state.word}` : ''}</div>
+					<div className="item" id="word" onClick={() => this.getWord()}>{this.state.word ? `${this.state.word}` : ''}</div>
 					<div>{this.state.partOfSpeech ? `${this.state.partOfSpeech}` : ''}</div>
 					<div className="item" id="definition">{this.state.definition ? `${this.state.definition}`: ''}</div>
 					<div className={this.state.listVisibility}>
