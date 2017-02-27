@@ -4,8 +4,6 @@ module.exports = router;
 
 // router.use('/exampleRoute', require('./exampleRoute'));
 
-// can run another query to get syns and ants when push that button or when initial query runs.
-
 // by using wordnik. my limit is 15k per HOUR so no need to have a counter although i can't store their data..
 router.get('/getWord', (req, res, next) => {
 	// get a random word

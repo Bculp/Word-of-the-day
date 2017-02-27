@@ -4,7 +4,7 @@ import axios from 'axios';
 export default class MainComponent extends React.Component {
 	constructor(props) {
 		super(props);
-		this.state = {word: '', partOfSpeech: '', definition: '', exampleUses: [], synonyms: [], antonyms: [] };
+		this.state = {word: '', partOfSpeech: '', definition: '', synonyms: [], antonyms: [], listVisibility: 'hide', synonymVisibility: 'hide', antonymVisibility: 'hide' };
 	}
 
 	componentDidMount() {
@@ -17,10 +17,9 @@ export default class MainComponent extends React.Component {
 		.then(info => {
 			let instance = info[0];
 			this.setState({
-				word: instance.word,
-				partOfSpeech: instance.partOfSpeech,
+				word: instance.word[0].toUpperCase() + instance.word.slice(1),
+				partOfSpeech: instance.partOfSpeech[0].toUpperCase() + instance.partOfSpeech.slice(1),
 				definition: instance.text,
-				exampleUses: instance.exampleUses
 			})
 			this.getRelatedWords(instance.word)
 		})
@@ -39,20 +38,47 @@ export default class MainComponent extends React.Component {
 					antonyms = instance.words;
 				}
 			})
-			this.setState({synonyms, antonyms})
+			synonyms = ['one','two','three'];
+			antonyms = ['four','five','six'];
+			this.setState({
+				synonyms, 
+				antonyms,
+				listVisibility: 'show'
+			})
 		})
 		.catch(error => console.error(error))
+	}
+
+	showElements(listType) {
+		if (listType === 'synonyms') {
+			this.setState({synonymVisibility: 'show-elements'})
+		}
+		else if (listType === 'antonyms') {
+			this.setState({antonymVisibility: 'show-elements'})
+		}
 	}
 
 	render() {
 		return (
 			<div>
-				<div>
-					<h1>{this.state.word ? `${this.state.word} - ${this.state.partOfSpeech}` : ''}</h1>
-					<h2>{this.state.definition ? `Definition: ${this.state.definition}`: ''}</h2>
-					<h4>{this.state.exampleUses.length > 0 ? `Examples: ${this.state.exampleUses}` : ''}</h4>
-					<h5>{this.state.synonyms.length > 0 ? `Synonyms: ${this.state.synonyms}` : ''}</h5>
-					<h5>{this.state.antonyms > 0 ? `Antonyms: ${this.state.antonyms}` : ''}</h5>
+				<div className="flex-container">
+					<div className="item" id="word" >{this.state.word ? `${this.state.word}` : ''}</div>
+					<div>{this.state.partOfSpeech ? `${this.state.partOfSpeech}` : ''}</div>
+					<div className="item" id="definition">{this.state.definition ? `${this.state.definition}`: ''}</div>
+					<div className={this.state.listVisibility}>
+						<ul className="list" onClick={() => this.showElements('synonyms')}>Synonyms
+							{this.state.synonyms.map((word,index) => {
+									return <li key={index} className={this.state.synonymVisibility}>{word}</li>
+								})
+							}
+						</ul>
+						<ul className="list" onClick={() => this.showElements('antonyms')}>Antonyms
+							{this.state.antonyms.map((word,index) => {
+									return <li key={index} className={this.state.antonymVisibility}>{word}</li>
+								})
+							}
+						</ul>
+					</div>
 				</div>
 			</div>
 		)

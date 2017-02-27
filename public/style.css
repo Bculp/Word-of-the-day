@@ -1,0 +1,45 @@
+.flex-container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+/* -- Word -- */
+.flex-container div:nth-child(1) {
+	font-size: 15vw;
+}
+
+/* -- Part of Speech -- */
+.flex-container div:nth-child(2) {
+	font-size: 5vw;
+}
+
+/* -- Definition -- */
+.flex-container div:nth-child(3) {
+	justify-content: middle;
+	align-content: center;
+	font-size: 3vw;
+}
+
+/* Synonyms & Antonyms*/
+.hide {
+	visibility: hidden;
+}
+
+.show {
+	display: flex;
+}
+
+.list {
+	list-style-type: none;
+	font-size: 2.5vw;
+}
+
+.list li {
+	text-align: center;
+	font-size: 1.5vw;
+}
+
+.show-elements {
+	
+}
