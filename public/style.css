@@ -9,20 +9,60 @@ body:hover {
 }
 
 /* -- Word -- */
-.flex-container div:nth-child(1) {
+#word {
 	font-size: 15vw;
 }
 
+.word-enter {
+	opacity: 0.01;
+	/*font-size: 12px;*/
+}
+
+.word-enter.word-enter-active {
+	opacity: 1;
+	transition: opacity 1000ms linear;
+	/*transition: font-size 8s ease-out;*/
+	/*font-size: 24px;*/
+}
+
+/*.word-leave {
+	opacity: 1;
+}
+
+.word-leave.word-leave-active {
+	opacity: 0.01;
+	transition: opacity 1000ms linear;
+}*/
+
 /* -- Part of Speech -- */
-.flex-container div:nth-child(2) {
+#partOfSpeech {
 	font-size: 5vw;
 }
 
+.partOfSpeech-enter {
+	opacity: 0.01;
+}
+
+.partOfSpeech-enter.partOfSpeech-enter-active {
+	opacity: 1;
+	transition: opacity 2000ms linear;
+}
+
+
 /* -- Definition -- */
-.flex-container div:nth-child(3) {
+#definition {
 	justify-content: middle;
 	align-content: center;
 	font-size: 3vw;
+}
+
+.definition-enter {
+	opacity: 0.01;
+}
+
+.definition-enter.definition-enter-active {
+	opacity: 1;
+	transition: opacity 3000ms linear;
 }
 
 /* Synonyms & Antonyms*/
@@ -46,4 +86,13 @@ body:hover {
 
 .show-elements {
 
+}
+
+.list-enter {
+	opacity: 0.01;
+}
+
+.list-enter.list-enter-active {
+	opacity: 1;
+	transition: opacity 4000ms linear;
 }
