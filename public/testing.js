@@ -8,7 +8,7 @@ const listEl = document.querySelector('.list')
 const synonymsEl = document.querySelector('#synonyms');
 const antonymsEl = document.querySelector('#antonyms');
 
-var state = {word: '', partOfSpeech: '', definition: '', synonyms: [], antonyms: [], listVisibility: 'hide', synonymVisibility: 'hide', antonymVisibility: 'hideAnts', test: 'hidden', running: false };
+let state = {word: '', partOfSpeech: '', definition: '', synonyms: [], antonyms: [] };
 
 function getWord() {
 	containerEl.classList.add('hide');
@@ -18,7 +18,7 @@ function getWord() {
 	definitionEl.classList.remove('definition-enter');
 	listEl.classList.remove('list-enter');
 	synonymsEl.innerHTML = '';
-
+	console.log('get word running');
 	axios.get('api/getWord')
 	.then(res => res.data)
 	.then(info => {
@@ -26,7 +26,7 @@ function getWord() {
 		state.word = instance.word[0].toUpperCase() + instance.word.slice(1);
 		state.partOfSpeech = instance.partOfSpeech ? instance.partOfSpeech[0].toUpperCase() + instance.partOfSpeech.slice(1) : '';
 		state.definition = instance.text;
-		
+		console.log('get word finished')
 		getRelatedWords(instance.word)
 	})
 	.catch(error => console.error(error))
@@ -39,13 +39,15 @@ function getRelatedWords(word) {
 		let synonyms = [], antonyms = [];
 		relatedWords && relatedWords.map(instance => {
 			if (instance.relationshipType === 'synonym') {
-				synonyms = instance.words;
+				console.log(instance.words)
+				synonyms = instance.words.slice(0,3);
 			} else if (instance.relationshipType === 'antonym') {
-					antonyms = instance.words;
+					antonyms = instance.words.slice(0,3);
+					console.log(instance.words)
 			}
 		})
-		synonyms = ['one','two','three'];
-		antonyms = ['four','five','six'];
+		// synonyms = ['one','two','three'];
+		// antonyms = ['four','five','six'];
 		
 		state.synonyms = synonyms;
 		state.antonyms = antonyms;
@@ -54,7 +56,6 @@ function getRelatedWords(word) {
 
 		wordEl.textContent = state.word;
 		wordEl.classList.add('word-enter')
-		state.running = 'true';
 
 		partOfSpeechEl.textContent = state.partOfSpeech;
 		partOfSpeechEl.classList.add('partOfSpeech-enter');
@@ -89,16 +90,34 @@ function getRelatedWords(word) {
 function showList(e) {
 	if (e.target.id === 'synonyms') {
 		let arr = Array.from(e.target.children)
-		arr.map((element, index) => {
+		if (arr.length < 1) return;
+		if (arr[0].classList.contains('hide')) {
+			arr.map((element, index) => {
 			element.classList.remove('hide');
 			element.classList.add(`enter${index}`);
-		})
+			})
+		} else {
+			arr.map((element, index) => {
+				element.classList.add('hide');
+				element.classList.remove(`enter${index}`)
+			})
+		}
+		
 	} else if (e.target.id === 'antonyms') {
 			let arr = Array.from(e.target.children)
-			arr.map((element, index) => {
+			if (arr.length < 1) return;
+			if (arr[0].classList.contains('hide')) {
+				arr.map((element, index) => {
 				element.classList.remove('hide');
 				element.classList.add(`enter${index}`);
-			})
+				})
+			} else {
+				arr.map((element, index) => {
+				element.classList.add('hide');
+				element.classList.remove(`enter${index}`)
+				})
+			}
+			
 	}
 }	
 
