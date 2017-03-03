@@ -1,11 +1,21 @@
+body {
+	background-color: rgb(255, 254, 239);
+	color: rgb(38, 38, 38)
+	font-family: "Big Caslon", "Book Antiqua", "Palatino Linotype", Georgia, serif;
+}
+
 body:hover {
 	cursor: default;
 }
+
+/* DEALING IWTH CNETERING AN RESIZING FONTS*/
 
 .flex-container {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
+	justify-content: center;
+	margin-top: 8vw;
 }
 
 .hide {
@@ -15,7 +25,7 @@ body:hover {
 /* -- Word -- */
 
 .word {
-	font-size: 15vw;
+	font-size: 12vw;
 	opacity: 0.1;
 }
 
@@ -26,13 +36,13 @@ body:hover {
 
 /* -- Part of Speech -- */
 .partOfSpeech {
-	font-size: 5vw;
+	font-size: 3vw;
 	opacity: 0.1;
 }
 
 .partOfSpeech-enter {
 	opacity: 1;
-	transition: opacity 3s ease;
+	transition: opacity 4s ease;
 }
 
 /* -- Definition -- */
@@ -45,7 +55,7 @@ body:hover {
 
 .definition-enter {
 	opacity: 1;
-	transition: opacity 4s ease;
+	transition: opacity 5s ease;
 }
 
 /* Synonyms & Antonyms*/
@@ -59,7 +69,7 @@ body:hover {
 
 .list-enter {
 	opacity: 1;
-	transition: opacity 4s ease;
+	transition: opacity 6s ease;
 }
 
 .list li {

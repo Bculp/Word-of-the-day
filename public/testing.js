@@ -7,6 +7,8 @@ const listEl = document.querySelector('.list')
 const synonymsEl = document.querySelector('#synonyms');
 const antonymsEl = document.querySelector('#antonyms');
 
+document.title = "Word of the Day"
+
 let state = {word: '', partOfSpeech: '', definition: '', synonyms: [], antonyms: [] };
 
 function getWord() {
