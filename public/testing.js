@@ -1,5 +1,4 @@
-let axios = require('axios');
-// import 'axios' from 'axios'
+const axios = require('axios');
 const containerEl = document.querySelector('.flex-container');
 const wordEl = document.querySelector('.word')
 const partOfSpeechEl = document.querySelector('.partOfSpeech')
@@ -46,11 +45,6 @@ function getRelatedWords(word) {
 					console.log(instance.words)
 			}
 		})
-		// synonyms = ['one','two','three'];
-		// antonyms = ['four','five','six'];
-		
-		state.synonyms = synonyms;
-		state.antonyms = antonyms;
 
 		containerEl.classList.remove('hide');
 
@@ -63,10 +57,15 @@ function getRelatedWords(word) {
 		definitionEl.textContent = state.definition;
 		definitionEl.classList.add('definition-enter');
 
+		if (synonyms.length < 1) synonyms = ['No synonyms found'];
+		if (antonyms.length < 1) antonyms = ['No antonyms found'];
+		state.synonyms = synonyms;
+		state.antonyms = antonyms;
+
 		synonymsEl.textContent = 'Synonyms';
 		state.synonyms.map(synonym => {
 			let li = document.createElement('li');
-			li.textContent = synonym;
+			li.textContent = synonym[0].toUpperCase() + synonym.slice(1);
 			li.classList.add('hide');
 			li.classList.add('list');
 			synonymsEl.appendChild(li);
@@ -75,7 +74,7 @@ function getRelatedWords(word) {
 		antonymsEl.textContent = 'Antonyms';
 		state.antonyms.map(antonym => {
 			let li = document.createElement('li');
-			li.textContent = antonym;
+			li.textContent = antonym[0].toUpperCase() + antonym.slice(1);
 			li.classList.add('hide');
 			li.classList.add('list');
 			antonymsEl.appendChild(li);
