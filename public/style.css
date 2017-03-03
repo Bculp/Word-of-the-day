@@ -9,64 +9,47 @@ body:hover {
 }
 
 /* -- Word -- */
-#word {
+
+.word {
 	font-size: 15vw;
+	opacity: 0.1;
 }
 
 .word-enter {
-	opacity: 0.01;
-	/*font-size: 12px;*/
-}
-
-.word-enter.word-enter-active {
 	opacity: 1;
-	transition: opacity 1000ms linear;
-	/*transition: font-size 8s ease-out;*/
-	/*font-size: 24px;*/
+	transition: opacity 2s linear;
 }
-
-/*.word-leave {
-	opacity: 1;
-}
-
-.word-leave.word-leave-active {
-	opacity: 0.01;
-	transition: opacity 1000ms linear;
-}*/
 
 /* -- Part of Speech -- */
-#partOfSpeech {
+.partOfSpeech {
 	font-size: 5vw;
+	opacity: 0.1;
 }
 
 .partOfSpeech-enter {
-	opacity: 0.01;
-}
-
-.partOfSpeech-enter.partOfSpeech-enter-active {
 	opacity: 1;
-	transition: opacity 2000ms linear;
+	transition: opacity 3s ease;
 }
-
 
 /* -- Definition -- */
-#definition {
+.definition {
 	justify-content: middle;
 	align-content: center;
 	font-size: 3vw;
+	opacity: 0.1;
 }
 
 .definition-enter {
-	opacity: 0.01;
-}
-
-.definition-enter.definition-enter-active {
 	opacity: 1;
-	transition: opacity 3000ms linear;
+	transition: opacity 4s ease;
 }
 
 /* Synonyms & Antonyms*/
 .hide {
+	visibility: hidden;
+}
+
+.hideAnts {
 	visibility: hidden;
 }
 
@@ -75,8 +58,15 @@ body:hover {
 }
 
 .list {
+	display: flex;
 	list-style-type: none;
 	font-size: 2.5vw;
+	opacity: 0.1;
+}
+
+.list-enter {
+	opacity: 1;
+	transition: opacity 4s ease;
 }
 
 .list li {
@@ -84,15 +74,17 @@ body:hover {
 	font-size: 1.5vw;
 }
 
-.show-elements {
-
-}
-
-.list-enter {
-	opacity: 0.01;
-}
-
-.list-enter.list-enter-active {
+.enter0 {
 	opacity: 1;
-	transition: opacity 4000ms linear;
+	transition: opacity 3s ease;
+}
+
+.enter1 {
+	opacity: 1;
+	transition: opacity 6s ease;
+}
+
+.enter2 {
+	opacity: 1;
+	transition: opacity 9s ease;
 }
