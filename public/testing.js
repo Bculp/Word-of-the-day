@@ -1,31 +1,24 @@
 const axios = require('axios');
-const containerEl = document.querySelector('.flex-container');
-const wordEl = document.querySelector('.word')
-const partOfSpeechEl = document.querySelector('.partOfSpeech')
-const definitionEl = document.querySelector('.definition')
+const wordEl = document.querySelector('#word')
+const partOfSpeechEl = document.querySelector('#partOfSpeech')
+const definitionEl = document.querySelector('#definition')
 const listEl = document.querySelector('.list')
-const synonymsEl = document.querySelector('#synonyms');
-const antonymsEl = document.querySelector('#antonyms');
+let synonymsFound = false, antonymsFound = false;
 
 document.title = "Word of the Day"
 
 let state = {word: '', partOfSpeech: '', definition: '', synonyms: [], antonyms: [] };
 
 function getWord() {
-	containerEl.classList.add('hide');
 
-	wordEl.classList.remove('word-enter');
-	partOfSpeechEl.classList.remove('partOfSpeech-enter');
-	definitionEl.classList.remove('definition-enter');
-	listEl.classList.remove('list-enter');
-	synonymsEl.innerHTML = '';
+	// synonymsEl.innerHTML = '';
 	console.log('get word running');
 	axios.get('api/getWord')
 	.then(res => res.data)
 	.then(info => {
 		let instance = info[0];
 		state.word = instance.word[0].toUpperCase() + instance.word.slice(1);
-		state.partOfSpeech = instance.partOfSpeech ? instance.partOfSpeech[0].toUpperCase() + instance.partOfSpeech.slice(1) : '';
+		state.partOfSpeech = `[${instance.partOfSpeech}]`;
 		state.definition = instance.text;
 		console.log('get word finished')
 		getRelatedWords(instance.word)
@@ -40,91 +33,62 @@ function getRelatedWords(word) {
 		let synonyms = [], antonyms = [];
 		relatedWords && relatedWords.map(instance => {
 			if (instance.relationshipType === 'synonym') {
-				console.log(instance.words)
 				synonyms = instance.words.slice(0,3);
 			} else if (instance.relationshipType === 'antonym') {
 					antonyms = instance.words.slice(0,3);
-					console.log(instance.words)
 			}
 		})
 
-		containerEl.classList.remove('hide');
-
 		wordEl.textContent = state.word;
-		wordEl.classList.add('word-enter')
-
 		partOfSpeechEl.textContent = state.partOfSpeech;
-		partOfSpeechEl.classList.add('partOfSpeech-enter');
-
 		definitionEl.textContent = state.definition;
-		definitionEl.classList.add('definition-enter');
 
-		if (synonyms.length < 1) synonyms = ['No synonyms found'];
-		if (antonyms.length < 1) antonyms = ['No antonyms found'];
 		state.synonyms = synonyms;
 		state.antonyms = antonyms;
 
-		synonymsEl.textContent = 'Synonyms';
-		state.synonyms.map(synonym => {
-			let li = document.createElement('li');
-			li.textContent = synonym[0].toUpperCase() + synonym.slice(1);
-			li.classList.add('hide');
-			li.classList.add('list');
-			synonymsEl.appendChild(li);
-		})
+		if (state.synonyms.length > 0) synonymsFound = true;
+		if (state.antonyms.length > 0) antonymsFound = true;
 
-		antonymsEl.textContent = 'Antonyms';
-		state.antonyms.map(antonym => {
-			let li = document.createElement('li');
-			li.textContent = antonym[0].toUpperCase() + antonym.slice(1);
-			li.classList.add('hide');
-			li.classList.add('list');
-			antonymsEl.appendChild(li);
-		})
+		if (synonymsFound) {
+			let synonymsEl = document.createElement('ul');
+			synonymsEl.textContent = 'Synonyms';
+			synonymsEl.classList.add('no-padding-list');
+			listEl.appendChild(synonymsEl);
+			state.synonyms.map(synonym => {
+				let li = document.createElement('li');
+				li.textContent = synonym[0].toUpperCase() + synonym.slice(1);
+				synonymsEl.appendChild(li);
+			})
+		}
 
-		listEl.classList.add('list-enter');
+		if (antonymsFound) {
+			let antonymsEl = document.createElement('ul');
+			antonymsEl.textContent = 'Antonyms';
+			if (synonymsFound && antonymsFound) antonymsEl.classList.add('normal-list');
+			else antonymsEl.classList.add('no-padding-list');
+			listEl.appendChild(antonymsEl);
+			state.antonyms.map(antonym => {
+				let li = document.createElement('li');
+				li.textContent = antonym[0].toUpperCase() + antonym.slice(1);
+				antonymsEl.appendChild(li);
+			})
+		}
 
 	})
 	.catch(error => console.error(error))
-}			
-
-function showList(e) {
-	if (e.target.id === 'synonyms') {
-		let arr = Array.from(e.target.children)
-		if (arr.length < 1) return;
-		if (arr[0].classList.contains('hide')) {
-			arr.map((element, index) => {
-			element.classList.remove('hide');
-			element.classList.add(`enter${index}`);
-			})
-		} else {
-			arr.map((element, index) => {
-				element.classList.add('hide');
-				element.classList.remove(`enter${index}`)
-			})
-		}
-		
-	} else if (e.target.id === 'antonyms') {
-			let arr = Array.from(e.target.children)
-			if (arr.length < 1) return;
-			if (arr[0].classList.contains('hide')) {
-				arr.map((element, index) => {
-				element.classList.remove('hide');
-				element.classList.add(`enter${index}`);
-				})
-			} else {
-				arr.map((element, index) => {
-				element.classList.add('hide');
-				element.classList.remove(`enter${index}`)
-				})
-			}
-			
-	}
-}	
+}
 
 wordEl.addEventListener('click', getWord);
-synonymsEl.addEventListener('click', (e) => showList(e));
-antonymsEl.addEventListener('click', (e) => showList(e));
 
 getWord();
+
+$(function() {
+	$('#flipbook').booklet({
+		width: '65%',
+		height: '70%',
+		closed: true,
+		autoCenter: true,
+		covers: true
+	});
+});
 
