@@ -25,6 +25,13 @@ body {
 	text-align: center;
 }
 
+#content {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
 /* -- Word -- */
 #word {
 	font-size: 4.5vw;
@@ -55,7 +62,7 @@ body {
 .list {
 	display: flex;
 	justify-content: center;
-	list-style-type: none;
+	align-items: center;
 	font-size: 1.5vw;
 	opacity: 1;
 }
@@ -64,15 +71,20 @@ body {
 	font-size: 1vw;
 }
 
-#synonyms {
+.normal-list {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
+	list-style-type: none;
+	justify-content: center;
 }
 
-#antonyms {
+.no-padding-list {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
+	list-style-type: none;
+	justify-content: center;
+	padding: 0;
 }
 
