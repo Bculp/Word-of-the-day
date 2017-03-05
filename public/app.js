@@ -4,16 +4,12 @@ const partOfSpeechEl = document.querySelector('#partOfSpeech');
 const definitionEl = document.querySelector('#definition');
 const listEl = document.querySelector('.list');
 const synth = window.speechSynthesis;
-let synonymsFound = false, antonymsFound = false;
-let icon;
+let synonymsFound = false, antonymsFound = false, icon;
+let state = {word: '', partOfSpeech: '', definition: '', synonyms: [], antonyms: [] };
 
 document.title = "Word of the Day"
 
-let state = {word: '', partOfSpeech: '', definition: '', synonyms: [], antonyms: [] };
-
 function getWord() {
-
-	console.log('get word running');
 	axios.get('api/getWord')
 	.then(res => res.data)
 	.then(info => {
@@ -21,7 +17,6 @@ function getWord() {
 		state.word = instance.word[0].toUpperCase() + instance.word.slice(1);
 		state.partOfSpeech = `[${instance.partOfSpeech}]`;
 		state.definition = instance.text;
-		console.log('get word finished')
 		getRelatedWords(instance.word)
 	})
 	.catch(error => console.error(error))
@@ -40,7 +35,7 @@ function getRelatedWords(word) {
 			}
 		})
 
-		wordEl.innerHTML = `<span id="text">${state.word} </span><span id="icon">&#128266;</span>`;
+		wordEl.innerHTML = `<span id="text">${state.word}</span> <span id="icon">&#128266;</span>`
 		icon = document.querySelector("#icon").addEventListener('click', pronounceWord);
 		partOfSpeechEl.textContent = state.partOfSpeech;
 		definitionEl.textContent = state.definition;
@@ -97,4 +92,3 @@ $(function() {
 		covers: true
 	});
 });
-

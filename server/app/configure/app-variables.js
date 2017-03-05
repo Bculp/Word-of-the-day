@@ -1,7 +1,7 @@
 const path = require('path');
 const loggingMiddleware = require('volleyball');
 const rootPath = path.join(__dirname, '../../../');
-const indexPath = path.join(rootPath, './public/testing.html');
+const indexPath = path.join(rootPath, './public/index.html');
 // const faviconPath = path.join(rootPath, './public/favicon.io');
 const env = require(path.join(rootPath, './server/env'));
 

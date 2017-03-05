@@ -1,5 +1,4 @@
 body {
-	/*background-color: rgb(255, 254, 239);*/
 	background-image: url('coffee_table.jpg');
 	background-size: 110vw 100vh;
 	font-family: "Big Caslon", "Book Antiqua", "Palatino Linotype", Georgia, serif;
@@ -9,9 +8,6 @@ body {
 	margin-top: 8vw;
 }
 
-#hide {
-	visibility: hidden;
-}
 #title {
 	font-size: 14vh;
 	text-align: center;
@@ -20,35 +16,39 @@ body {
 
 #author {
 	font-size: 2vw;
-	line-height: 100%;
+	line-height: 70%;
 	margin-top: 50%;
 	text-align: center;
 }
 
 #content {
 	display: flex;
+	display: -webkit-flex;
 	flex-direction: column;
+	-webkit-flex-direction: column;
 	justify-content: center;
+	-webkit-justify-content: center;
 	align-items: center;
+	-webkit-align-items: center;
 }
 
 /* -- Word -- */
 #word {
-	font-size: 4.5vw;
+	font-size: 4vw;
 	text-align: center;
-	opacity: 1;
 	overflow-wrap: break-word;
 	margin-top: 3vw;
 }
 
+/* -- Speaker Icon -- */
+
 #icon {
-	font-size: 2.5vw;
+	font-size: 2vw;
 }
 
 /* -- Part of Speech -- */
 #partOfSpeech {
 	font-size: 2.5vw;
-	opacity: 1;
 	text-align: center;
 	margin-top: 2vw;
 }
@@ -56,19 +56,21 @@ body {
 /* -- Definition -- */
 #definition {
 	font-size: 1.5vw;
-	opacity: 1;
 	text-align: center;
 	overflow-wrap: break-word;
-	margin-top: 3vw;
+	margin-top: 2.5vw;
 }
 
 /* Synonyms & Antonyms*/
 .list {
 	display: flex;
+	display: -webkit-flex;
+	-webkit-flex-direction: row;
 	justify-content: center;
+	-webkit-justify-content: center;
 	align-items: center;
+	-webkit-align-items: center;
 	font-size: 1.5vw;
-	opacity: 1;
 }
 
 .list li {
@@ -77,18 +79,25 @@ body {
 
 .normal-list {
 	display: flex;
+	display: -webkit-flex;
 	flex-direction: column;
+	-webkit-flex-direction: column;
 	align-items: center;
+	-webkit-align-items: center;
 	list-style-type: none;
 	justify-content: center;
+	-webkit-justify-content: center;
 }
 
 .no-padding-list {
 	display: flex;
+	display: -webkit-flex;
 	flex-direction: column;
+	-webkit-flex-direction: column;
 	align-items: center;
+	-webkit-align-items: center;
 	list-style-type: none;
 	justify-content: center;
+	-webkit-justify-content: center;
 	padding: 0;
 }
-
