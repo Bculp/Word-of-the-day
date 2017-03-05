@@ -1,25 +1,25 @@
-/*body {
-	background-color: rgb(255, 254, 239);
-	color: rgb(38, 38, 38)
+body {
+	/*background-color: rgb(255, 254, 239);*/
+	background-image: url('coffee_table.jpg');
+	background-size: 110vw 100vh;
 	font-family: "Big Caslon", "Book Antiqua", "Palatino Linotype", Georgia, serif;
-}*/
-
-/* -- ADD SHADOW FOR STRONGER BOOK EFFECT */
-/* added to .booklet but would slide in and out on cover turn animation*/
+}
 
 #center {
-	/*margin-top: 8vw;*/
+	margin-top: 8vw;
 }
+
 #hide {
 	visibility: hidden;
 }
 #title {
-	font-size: 13.09vw;
+	font-size: 14vh;
 	text-align: center;
 	color: white;
 }
 
 #author {
+	font-size: 2vw;
 	line-height: 100%;
 	margin-top: 50%;
 	text-align: center;
@@ -27,7 +27,7 @@
 
 /* -- Word -- */
 #word {
-	font-size: 6vw;
+	font-size: 4.5vw;
 	text-align: center;
 	opacity: 1;
 	overflow-wrap: break-word;
@@ -36,7 +36,7 @@
 
 /* -- Part of Speech -- */
 #partOfSpeech {
-	font-size: 3vw;
+	font-size: 2.5vw;
 	opacity: 1;
 	text-align: center;
 	margin-top: 2vw;
@@ -44,12 +44,11 @@
 
 /* -- Definition -- */
 #definition {
-	font-size: 2vw;
+	font-size: 1.5vw;
 	opacity: 1;
 	text-align: center;
 	overflow-wrap: break-word;
 	margin-top: 3vw;
-
 }
 
 /* Synonyms & Antonyms*/
@@ -57,11 +56,12 @@
 	display: flex;
 	justify-content: center;
 	list-style-type: none;
-	font-size: 2vw;
+	font-size: 1.5vw;
 	opacity: 1;
 }
+
 .list li {
-	font-size: 1.3vw;
+	font-size: 1vw;
 }
 
 #synonyms {

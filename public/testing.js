@@ -79,8 +79,8 @@ getWord();
 
 $(function() {
 	$('#flipbook').booklet({
-		width: '90%',
-		height: '100%',
+		width: '65%',
+		height: '70%',
 		closed: true,
 		autoCenter: true,
 		covers: true
