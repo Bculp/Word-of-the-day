@@ -33,11 +33,11 @@
 	
    	/* Custom Page Types */
 	.booklet .b-page-blank  {padding:0; width:100%; height:100%;}
-	.booklet .b-page-cover  {padding:0; width:100%; height:100%; background:#61666b;}
+	.booklet .b-page-cover  {padding:0; width:100%; height:100%; background-color: #268cc0;}
 	.booklet .b-page-cover h3  {color:#fff; text-shadow:0 1px 3px #222;}
    
    	/* Page Numbers */
-	.booklet .b-counter {bottom:10px; position:absolute; display:block; width:25px; height:20px; background:#ccc; color:#444; text-align:center; font-family:Georgia, "Times New Roman", Times, serif; font-size:10px; padding:5px 0 0;}
+	.booklet .b-counter {bottom:10px; position:absolute; display:block; width:25px; height:20px; background:#ccc; color:#444; text-align:center; font-family:"Big Caslon", "Book Antiqua", "Palatino Linotype", Georgia, serif; font-size:15px; padding:5px 0 0;}
 	.booklet .b-wrap-left  .b-counter  {left:10px;}
 	.booklet .b-wrap-right .b-counter {right:10px;}
    
