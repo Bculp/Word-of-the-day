@@ -1,9 +1,11 @@
 const axios = require('axios');
-const wordEl = document.querySelector('#word')
-const partOfSpeechEl = document.querySelector('#partOfSpeech')
-const definitionEl = document.querySelector('#definition')
-const listEl = document.querySelector('.list')
+const wordEl = document.querySelector('#word');
+const partOfSpeechEl = document.querySelector('#partOfSpeech');
+const definitionEl = document.querySelector('#definition');
+const listEl = document.querySelector('.list');
+const synth = window.speechSynthesis;
 let synonymsFound = false, antonymsFound = false;
+let icon;
 
 document.title = "Word of the Day"
 
@@ -11,7 +13,6 @@ let state = {word: '', partOfSpeech: '', definition: '', synonyms: [], antonyms:
 
 function getWord() {
 
-	// synonymsEl.innerHTML = '';
 	console.log('get word running');
 	axios.get('api/getWord')
 	.then(res => res.data)
@@ -39,7 +40,8 @@ function getRelatedWords(word) {
 			}
 		})
 
-		wordEl.textContent = state.word;
+		wordEl.innerHTML = `<span id="text">${state.word} </span><span id="icon">&#128266;</span>`;
+		icon = document.querySelector("#icon").addEventListener('click', pronounceWord);
 		partOfSpeechEl.textContent = state.partOfSpeech;
 		definitionEl.textContent = state.definition;
 
@@ -78,7 +80,11 @@ function getRelatedWords(word) {
 	.catch(error => console.error(error))
 }
 
-wordEl.addEventListener('click', getWord);
+function pronounceWord() {
+	let text = document.querySelector('#text').textContent;
+	let utterance = new SpeechSynthesisUtterance(text);
+	synth.speak(utterance);
+}
 
 getWord();
 

@@ -41,6 +41,10 @@ body {
 	margin-top: 3vw;
 }
 
+#icon {
+	font-size: 2.5vw;
+}
+
 /* -- Part of Speech -- */
 #partOfSpeech {
 	font-size: 2.5vw;
