@@ -3,28 +3,52 @@
 <head>
 	<title></title>
 	<link rel="stylesheet" href="./style.css">
+	<link rel="stylesheet" href="./jquery.booklet.latest.css">
+	<script src="./jquery-3.1.1.min.js" defer></script>
+	<script src="./jquery-ui.min.js" defer></script>
+	<script src="./jquery.booklet.latest.min.js" defer></script>
 	<script src="./bundle.js" defer></script>
 </head>
 <body>
-	<div class="flex-container">
-		<div class='word'></div>
-		<div class="partOfSpeech"></div>
-		<div class="definition"></div>
-		<div class="list">
-			<ul id="synonyms">Synonyms
-				<li class="hide"></li>
-				<li class="hide"></li>
-				<li class="hide"></li>
-			</ul>
-			<ul id="antonyms">Antonyms
-				<li class="hide"></li>
-				<li class="hide"></li>
-				<li class="hide"></li>
-			</ul>
+	<!-- <div id="center">
+		<div id="flipbook">
+	    <div class="hard">word of the day</div> 
+	    <div class="hard">&copy; 2017 Brandon Culp</div>
+	    <div> Page 1 </div>
+	    <div> Page 2 </div>
+	    <div> Page 3 </div>
+	    <div> Page 4 </div>
+	    <div class="hard"></div>
+	    <div class="hard"></div>
+	  </div>
+	</div> -->
+
+	<div id='center'>
+		<div id="flipbook">
+			<div id="title">Word of the Day</div>
+			<div id="author">&copy; 2017 Brandon Culp</div>
+			<div>
+				<div id='word'></div>
+				<div id="partOfSpeech"></div>
+				<div id="definition"></div>
+				<div class="list">
+					<ul id="synonyms">Synonyms
+						<li></li>
+						<li></li>
+						<li></li>
+					</ul>
+					<ul id="antonyms">Antonyms
+						<li></li>
+						<li></li>
+						<li></li>
+					</ul>
+				</div>
+			</div>
+				
+			<div></div>
+
 		</div>
-		<div></div>
 	</div>
-	<div id="developer-tag">&copy; 2017 Brandon Culp</div>
 </body>
 </html>
 

@@ -1,8 +1,8 @@
 const axios = require('axios');
-const containerEl = document.querySelector('.flex-container');
-const wordEl = document.querySelector('.word')
-const partOfSpeechEl = document.querySelector('.partOfSpeech')
-const definitionEl = document.querySelector('.definition')
+// const containerEl = document.querySelector('.flex-container');
+const wordEl = document.querySelector('#word')
+const partOfSpeechEl = document.querySelector('#partOfSpeech')
+const definitionEl = document.querySelector('#definition')
 const listEl = document.querySelector('.list')
 const synonymsEl = document.querySelector('#synonyms');
 const antonymsEl = document.querySelector('#antonyms');
@@ -12,12 +12,7 @@ document.title = "Word of the Day"
 let state = {word: '', partOfSpeech: '', definition: '', synonyms: [], antonyms: [] };
 
 function getWord() {
-	containerEl.classList.add('hide');
 
-	wordEl.classList.remove('word-enter');
-	partOfSpeechEl.classList.remove('partOfSpeech-enter');
-	definitionEl.classList.remove('definition-enter');
-	listEl.classList.remove('list-enter');
 	synonymsEl.innerHTML = '';
 	console.log('get word running');
 	axios.get('api/getWord')
@@ -25,7 +20,8 @@ function getWord() {
 	.then(info => {
 		let instance = info[0];
 		state.word = instance.word[0].toUpperCase() + instance.word.slice(1);
-		state.partOfSpeech = instance.partOfSpeech ? instance.partOfSpeech[0].toUpperCase() + instance.partOfSpeech.slice(1) : '';
+		state.partOfSpeech = `[${instance.partOfSpeech}]`;
+		// state.partOfSpeech = instance.partOfSpeech ? instance.partOfSpeech[0].toUpperCase() + instance.partOfSpeech.slice(1) : '';
 		state.definition = instance.text;
 		console.log('get word finished')
 		getRelatedWords(instance.word)
@@ -48,19 +44,12 @@ function getRelatedWords(word) {
 			}
 		})
 
-		containerEl.classList.remove('hide');
-
 		wordEl.textContent = state.word;
-		wordEl.classList.add('word-enter')
-
 		partOfSpeechEl.textContent = state.partOfSpeech;
-		partOfSpeechEl.classList.add('partOfSpeech-enter');
-
 		definitionEl.textContent = state.definition;
-		definitionEl.classList.add('definition-enter');
 
-		if (synonyms.length < 1) synonyms = ['No synonyms found'];
-		if (antonyms.length < 1) antonyms = ['No antonyms found'];
+		if (synonyms.length < 1) synonyms = ['None found'];
+		if (antonyms.length < 1) antonyms = ['None found'];
 		state.synonyms = synonyms;
 		state.antonyms = antonyms;
 
@@ -68,7 +57,6 @@ function getRelatedWords(word) {
 		state.synonyms.map(synonym => {
 			let li = document.createElement('li');
 			li.textContent = synonym[0].toUpperCase() + synonym.slice(1);
-			li.classList.add('hide');
 			li.classList.add('list');
 			synonymsEl.appendChild(li);
 		})
@@ -77,54 +65,25 @@ function getRelatedWords(word) {
 		state.antonyms.map(antonym => {
 			let li = document.createElement('li');
 			li.textContent = antonym[0].toUpperCase() + antonym.slice(1);
-			li.classList.add('hide');
 			li.classList.add('list');
 			antonymsEl.appendChild(li);
 		})
 
-		listEl.classList.add('list-enter');
-
 	})
 	.catch(error => console.error(error))
-}			
-
-function showList(e) {
-	if (e.target.id === 'synonyms') {
-		let arr = Array.from(e.target.children)
-		if (arr.length < 1) return;
-		if (arr[0].classList.contains('hide')) {
-			arr.map((element, index) => {
-			element.classList.remove('hide');
-			element.classList.add(`enter${index}`);
-			})
-		} else {
-			arr.map((element, index) => {
-				element.classList.add('hide');
-				element.classList.remove(`enter${index}`)
-			})
-		}
-		
-	} else if (e.target.id === 'antonyms') {
-			let arr = Array.from(e.target.children)
-			if (arr.length < 1) return;
-			if (arr[0].classList.contains('hide')) {
-				arr.map((element, index) => {
-				element.classList.remove('hide');
-				element.classList.add(`enter${index}`);
-				})
-			} else {
-				arr.map((element, index) => {
-				element.classList.add('hide');
-				element.classList.remove(`enter${index}`)
-				})
-			}
-			
-	}
-}	
+}
 
 wordEl.addEventListener('click', getWord);
-synonymsEl.addEventListener('click', (e) => showList(e));
-antonymsEl.addEventListener('click', (e) => showList(e));
 
 getWord();
+
+$(function() {
+	$('#flipbook').booklet({
+		width: '90%',
+		height: '100%',
+		closed: true,
+		autoCenter: true,
+		covers: true
+	});
+});
 

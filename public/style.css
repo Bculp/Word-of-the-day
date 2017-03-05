@@ -1,94 +1,67 @@
-body {
+/*body {
 	background-color: rgb(255, 254, 239);
 	color: rgb(38, 38, 38)
 	font-family: "Big Caslon", "Book Antiqua", "Palatino Linotype", Georgia, serif;
+}*/
+
+/* -- ADD SHADOW FOR STRONGER BOOK EFFECT */
+/* added to .booklet but would slide in and out on cover turn animation*/
+
+#center {
+	/*margin-top: 8vw;*/
 }
-
-body:hover {
-	cursor: default;
-}
-
-/* DEALING IWTH CNETERING AN RESIZING FONTS*/
-
-.flex-container {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: center;
-	margin-top: 8vw;
-}
-
-.hide {
+#hide {
 	visibility: hidden;
+}
+#title {
+	font-size: 13.09vw;
+	text-align: center;
+	color: white;
+}
+
+#author {
+	line-height: 100%;
+	margin-top: 50%;
+	text-align: center;
 }
 
 /* -- Word -- */
-
-.word {
-	font-size: 12vw;
-	opacity: 0.1;
-}
-
-.word-enter {
+#word {
+	font-size: 6vw;
+	text-align: center;
 	opacity: 1;
-	transition: opacity 2s linear;
+	overflow-wrap: break-word;
+	margin-top: 3vw;
 }
 
 /* -- Part of Speech -- */
-.partOfSpeech {
+#partOfSpeech {
 	font-size: 3vw;
-	opacity: 0.1;
-}
-
-.partOfSpeech-enter {
 	opacity: 1;
-	transition: opacity 4s ease;
+	text-align: center;
+	margin-top: 2vw;
 }
 
 /* -- Definition -- */
-.definition {
-	justify-content: middle;
-	align-content: center;
-	font-size: 3vw;
-	opacity: 0.1;
-}
-
-.definition-enter {
+#definition {
+	font-size: 2vw;
 	opacity: 1;
-	transition: opacity 5s ease;
+	text-align: center;
+	overflow-wrap: break-word;
+	margin-top: 3vw;
+
 }
 
 /* Synonyms & Antonyms*/
-
 .list {
 	display: flex;
+	justify-content: center;
 	list-style-type: none;
-	font-size: 2.5vw;
-	opacity: 0.1;
-}
-
-.list-enter {
+	font-size: 2vw;
 	opacity: 1;
-	transition: opacity 6s ease;
 }
-
 .list li {
-	font-size: 1.5vw;
-}
-
-.enter0 {
-	opacity: 1;
-	transition: opacity 3s ease;
-}
-
-.enter1 {
-	opacity: 1;
-	transition: opacity 6s ease;
-}
-
-.enter2 {
-	opacity: 1;
-	transition: opacity 9s ease;
+	font-size: 1.3vw;
 }
 
 #synonyms {
@@ -102,10 +75,4 @@ body:hover {
 	flex-direction: column;
 	align-items: center;
 }
-
-#developer-tag {
-	position: fixed;
-	bottom: 0;
-}
-
 
