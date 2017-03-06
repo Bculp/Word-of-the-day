@@ -5,8 +5,7 @@
   "author": "Brandon Culp",
   "main": "server/main.js",
   "scripts": {
-    "start": "webpack -w & nodemon --watch server -e js,html server/main.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "webpack -w & nodemon --watch server -e js,html server/main.js"
   },
   "respository": {
     "type": "git",
