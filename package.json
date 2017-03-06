@@ -3,10 +3,10 @@
   "version": "1.0.0",
   "description": "An app that gives you a word along with a definition, synonyms, and antonyms.",
   "author": "Brandon Culp",
-  "main": "server/main.js",
+  "main": "public/app.js",
   "scripts": {
     "start": "webpack -w && nodemon --watch server -e js,html server/main.js",
-    "post-install": "webpack --config ./webpack.config.js --progress--colors"
+    "post-install": "webpack --config ./webpack.config.js --progress --colors"
   },
   "respository": {
     "type": "git",
