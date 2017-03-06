@@ -1,1 +1,1 @@
-web: node ./server/main.js -p $PORT
+web: webpack && node ./server/main.js -p $PORT
