@@ -5,9 +5,7 @@
   "author": "Brandon Culp",
   "main": "public/app.js",
   "scripts": {
-    "build": "webpack --config ./webpack.config.js --progress --colors",
-    "start": "webpack -w & nodemon --watch server -e js,html server/main.js",
-    "post-install": "npm run build"
+    "start": "webpack -w & nodemon --watch server -e js,html server/main.js"
   },
   "respository": {
     "type": "git",
