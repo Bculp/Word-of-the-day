@@ -7,8 +7,6 @@ const synth = window.speechSynthesis;
 let synonymsFound = false, antonymsFound = false, icon;
 let state = {word: '', partOfSpeech: '', definition: '', synonyms: [], antonyms: [] };
 
-document.title = "Word of the Day"
-
 function getWord() {
 	axios.get('api/getWord')
 	.then(res => res.data)
