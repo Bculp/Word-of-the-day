@@ -1,6 +1,9 @@
 module.exports = function(app) {
 
-	require('./.keys.js');
+	if (process.env.NODE_ENV != 'production') {
+		require('./.keys.js');
+	}
+
 
 	// setValue and getValue are aliases for app.set and app.get
 	// used for setting env variables
