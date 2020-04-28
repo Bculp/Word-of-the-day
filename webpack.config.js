@@ -3,5 +3,6 @@ module.exports = {
 	output: {
 		path: __dirname,
 		filename: './public/bundle.js'
-	}
+  },
+  mode: 'production'
 };

@@ -9,13 +9,13 @@ body {
 }
 
 #title {
-	font-size: 8vw; 
+	font-size: 6rem; 
 	text-align: center;
 	color: #fbfbf8;
 }
 
 #author {
-	font-size: 2vw;
+	font-size: 1.2rem;
 	line-height: 70%;
 	margin-top: 50%;
 	text-align: center;
@@ -34,7 +34,7 @@ body {
 
 /* -- Word -- */
 #word {
-	font-size: 4vw;
+	font-size: 3rem;
 	text-align: center;
 	overflow-wrap: break-word;
 	margin-top: 3vw;
@@ -43,12 +43,12 @@ body {
 /* -- Speaker Icon -- */
 
 #icon {
-	font-size: 2vw;
+	font-size: 1.5rem;
 }
 
 /* -- Part of Speech -- */
 #partOfSpeech {
-	font-size: 2.5vw;
+	font-size: 1.6rem;
 	text-align: center;
 	margin-top: 2vw;
 	opacity: .8;
@@ -56,7 +56,7 @@ body {
 
 /* -- Definition -- */
 #definition {
-	font-size: 1.5vw;
+	font-size: 1rem;
 	text-align: center;
 	overflow-wrap: break-word;
 	margin-top: 2.5vw;
@@ -71,11 +71,11 @@ body {
 	-webkit-justify-content: center;
 	align-items: center;
 	-webkit-align-items: center;
-	font-size: 1.5vw;
+	font-size: 1rem;
 }
 
 .list li {
-	font-size: 1vw;
+	font-size: 0.7rem;
 }
 
 .normal-list {
@@ -101,4 +101,10 @@ body {
 	justify-content: center;
 	-webkit-justify-content: center;
 	padding: 0;
+}
+
+@media (max-width: 768px) {
+  #center {
+    margin-top: 10rem;
+  }
 }
